@@ -20,10 +20,10 @@
 include:
   # If hosted on gitlab.com.
   - project: 'mog33/gitlab-ci-drupal'
-    ref: 2.x-dev
+    ref: 3.x-dev
     file: '/.gitlab-ci/.gitlab-ci-template.yml'
   # If hosted on an other Gitlab instance.
-  # - remote: 'https://gitlab.com/mog33/gitlab-ci-drupal/-/raw/2.x-dev/.gitlab-ci/.gitlab-ci-template.yml'
+  # - remote: 'https://gitlab.com/mog33/gitlab-ci-drupal/-/raw/3.x-dev/.gitlab-ci/.gitlab-ci-template.yml'
 
 # If needed by your Gitlab-ci instance, you can set global tags for all jobs.
 # default:
@@ -46,9 +46,9 @@ variables:
 
   # Global config remote files ref.
   # MUST be the same as include: ref: from above.
-  CI_REF: 2.x-dev
+  CI_REF: 3.x-dev
 
-  # Set a version, default is Drupal 8.9, can be 9.0.
+  # Set a version, default is Drupal 8.9, can be 9.0 or 9.1.
   # CI_DRUPAL_VERSION: "8.9"
 
   ##############################################################################
@@ -85,12 +85,12 @@ variables:
   # Phpstan need autoloading, that's why we use web_root.
   DIRS_QA: "${WEB_ROOT}/modules/custom"
   # Eslint / Stylelint files to test.
-  DIRS_JS: "${CI_PROJECT_DIR}/js/*.js"
-  DIRS_CSS: "${CI_PROJECT_DIR}/css/*.css"
+  # DIRS_JS: "${CI_PROJECT_DIR}/js/*.js"
+  # DIRS_CSS: "${CI_PROJECT_DIR}/css/*.css"
   # Twig files to test.
-  DIRS_TWIG: "${CI_PROJECT_DIR}/templates"
+  DIRS_TWIG: "${CI_PROJECT_DIR}/modules/ui_styles_library/templates"
   # phpmetrics / phpstats dirs to include.
-  DIRS_PHP: "${CI_PROJECT_DIR}"
+  # DIRS_PHP: "${CI_PROJECT_DIR}"
   # Set SKIP_XXX variable to 1 to skip.
   # Security is for a Drupal project with third party.
   SKIP_TEST_SECURITY: 1
@@ -99,7 +99,7 @@ variables:
   # If you don't have any javascript files, you can skip with
   SKIP_LINT_JS: 1
   # If you don't have any twig files, you can skip with
-  SKIP_LINT_TWIG: 1
+  # SKIP_LINT_TWIG: 1
   #
   ##############################################################################
 

@@ -72,6 +72,7 @@ function _ui_styles_layout_builder_submit_block_form(array $form, FormStateInter
   /** @var \Drupal\layout_builder\Form\ConfigureBlockFormBase $formObject */
   $formObject = $formState->getFormObject();
   $component = $formObject->getCurrentComponent();
+  $selected = [];
 
   // Block title.
   foreach ($form['ui_styles_title'] as $id => $element) {
@@ -166,7 +167,7 @@ function ui_styles_layout_builder_form_layout_builder_configure_section_alter(&$
  */
 function _ui_styles_layout_builder_submit_section_form(array $form, FormStateInterface $formState) {
   $selected = [];
-  foreach ($form['ui_style'] as $id => $element) {
+  foreach (array_keys($form['ui_style']) as $id) {
     if (strpos($id, 'ui_styles_') === 0) {
       $value = $formState->getValue('ui_style')[$id];
       $id = str_replace('ui_styles_', '', $id);
@@ -248,7 +249,7 @@ function ui_styles_layout_builder_entity_view_alter(array &$build, EntityInterfa
           // We may encounter some issue when manipulating the last section.
           continue;
         }
-        /* @var Drupal\layout_builder\Plugin\Field\FieldType\LayoutSectionItem $section_item */
+        /** @var Drupal\layout_builder\Plugin\Field\FieldType\LayoutSectionItem $section_item */
         $section = $section_item->get('section')->getValue();
         $selected = $section->getThirdPartySetting('ui_styles', 'selected') ?: [];
         $extra = $section->getThirdPartySetting('ui_styles', 'extra') ?: '';

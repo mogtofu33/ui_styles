@@ -87,7 +87,7 @@ class StylePluginManager extends DefaultPluginManager implements StylePluginMana
    */
   public function processDefinition(&$definition, $plugin_id) {
     parent::processDefinition($definition, $plugin_id);
-    // TODO: Add validation of the plugin definition here.
+    // @todo: Add validation of the plugin definition here.
     if (empty($definition['id'])) {
       throw new PluginException(sprintf('Example plugin property (%s) definition "is" is required.', $plugin_id));
     }

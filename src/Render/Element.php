@@ -183,7 +183,7 @@ class Element extends CoreElement {
       $double_colon = strpos($callback, '::');
       if ($double_colon === FALSE) {
         // We don't deal with this situation.
-        // TODO: Do we need to deal with it? Check Drupal\Core\Render\Renderer.
+        // @todo: Do we need to deal with it? Check Drupal\Core\Render\Renderer.
       }
       elseif ($double_colon > 0) {
         $callback = explode('::', $callback, 2);
